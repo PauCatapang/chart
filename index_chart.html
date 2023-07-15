@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Chart</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="icon" type="x-icon" href="https://raw.githubusercontent.com/PauCatapang/paupc.com/main/warning.png">
+
+    <style>
+        .background {
+            position: relative;
+            background-image: url('https://raw.githubusercontent.com/PauCatapang/chart/main/Untitled%20design%20(2).png');
+            background-size: cover;
+            background-position: center;
+            /* width: 1585px;
+            height: 720px; */
+        }
+
+        .last {
+            padding: 20px 15%;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+            background: #370505;
+        }
+
+        .last-text p {
+            color: #B47272;
+            font-size: 14px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="background">
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <section class="last">
+        <div class="last-text">
+            <p>Copyright © 2022 by Pauline Catapang All Rights Reserved.</p>
+        </div>
+    </section>
+
+</body>
+
+<script>
+    const DATA_COUNT = 7;
+    const NUMBER_CFG = { count: DATA_COUNT, min: -100, max: 100 };
+
+    const labels = ['2001', '2002', '2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022'];
+    const dataset = [43.4, 24, 12, 72.4, 76.3, 62, 44.4, 155.2, 76.9, 47.8, 65.8, 32.1, 30.5, 69.2, 23, 19, 36.6, 82.1, 25.3, 32.8, 62.6, 29.9];
+
+    const config = {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [
+                {
+                    label: 'Food Price Inflation',
+                    data: dataset,
+                    fill: false,
+                    borderColor: '#370505',
+                    tension: 0.1
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                x: {
+                    ticks: {
+                        color: '#341E0E'
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                title: {
+                    display: true,
+                    text: 'Chart.js Line Chart'
+                }
+            }
+        },
+    };
+
+    const canvas = document.getElementById('myChart');
+    const chart = new Chart(canvas, config);
+</script>
+
+</html>
